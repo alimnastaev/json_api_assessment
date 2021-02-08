@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "6829b883-3f30-4c9b-ab0a-161dd1e74cda",
+		"name": "Json Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add_new_repo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"alimnastaev\",\n    \"repo\": \"aoc_2020\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/add_new_repo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"add_new_repo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new_and_former_stargazers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"octocat\",\n    \"repo\": \"hello-world\",\n    \"start_range\": \"2011-01-07T00:00:00Z\",\n    \"end_range\": \"2021-01-26T23:59:59Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/new_and_former_stargazers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"new_and_former_stargazers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
