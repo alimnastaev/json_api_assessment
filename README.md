@@ -1,4 +1,4 @@
-![Elixir CI](https://github.com/alimnastaev/json_api_api_assessment/workflows/Elixir%20CI/badge.svg)
+![Elixir CI](https://github.com/alimnastaev/json_api_assessment/workflows/Elixir%20CI/badge.svg)
 
 # JsonApi Assessment
 ### **LOGIC behind the code:**
