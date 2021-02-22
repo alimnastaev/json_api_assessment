@@ -1,6 +1,17 @@
 ![Elixir CI](https://github.com/alimnastaev/json_api_assessment/workflows/Elixir%20CI/badge.svg)
 
 # JsonApi Assessment
+
+
+Starting from a new Phoenix project, you’ll need to implement the following:
+
+1. A JSON endpoint to add new repositories to the system.
+2. The ability to retrieve and store stargazers for tracked repositories using the Github API. 
+<br />This will be run daily.*
+4. Add a second JSON endpoint to return a list of new and former stargazers given a date range and repository.
+* Implementation of the actual scheduling isn't necessary but we would like to know in your README how you would handle this.
+
+
 ### **LOGIC behind the code:**
 #### - **StargazersController `"/add_new_repo"` endpoint:** 
 1. We are checking if `user + repo_name` combination already exists/saved in the system. If NOT we are calling Github API endpoint `https://api.github.com/repos/#{username}/#{repo_name}/stargazers`to make sure `user + repo_name` valid and if yes we are collecting all stargazers.
@@ -129,7 +140,3 @@ So the main idea in my implementation is:
  <br />COMPARE `old data` (was collected yesterday by cron job or when starred repo was saved manually through the first endpoint) against `new data` (collected this morning by cron job).
 If it exists ONLY in `old data`, I need update that record to `unstarred` and timestamp should be updated to `- 1` day.
 I left some logs for the `Cron.run` execution to make it more clear what I mean.
-
-#### **There is really cool CastParams Plug implementation along with Norm library and the pipechain approach in the controllers to avoid unnecessary `View` usage since it is just a JSON API. I believe that way the app having is much more clear and solid API functionality! I would love to discuss it during the interview!**
-
-Thank you so much in advance!
