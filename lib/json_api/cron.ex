@@ -25,11 +25,11 @@ defmodule JsonApi.Cron do
         if Enum.member?(new_data, old_elem) do
           acc
         else
-          {username, repo_name, {stargazer, _, _}} = old_elem
+          {username, repo_name, {stargazer, timestamp, _}} = old_elem
 
-          new_elem =
-            {username, repo_name,
-             {stargazer, Date.utc_today() |> Date.add(-1) |> Date.to_string(), "unstarred"}}
+          timestamp = ts_minus_one_day(timestamp)
+
+          new_elem = {username, repo_name, {stargazer, timestamp, "unstarred"}}
 
           acc ++ [new_elem] ++ [old_elem]
         end
@@ -43,5 +43,13 @@ defmodule JsonApi.Cron do
 
     # IEX OUTPUT
     :ets.select(:stargazers, [{:"$1", [], [:"$1"]}])
+  end
+
+  defp ts_minus_one_day(timestamp) do
+    {:ok, dt, 0} = DateTime.from_iso8601(timestamp)
+
+    dt
+    |> Timex.shift(days: -1)
+    |> DateTime.to_iso8601()
   end
 end
