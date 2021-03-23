@@ -12,11 +12,11 @@ defmodule JsonApiWeb.StargazersControllerTest do
       "repo" => "hello-world"
     }
 
-    no_stars_repo_body = %{
+    no_repo_body = %{
       "username" => "alimnastaev"
     }
 
-    %{starred_repo_body: starred_repo_body, no_stars_repo_body: no_stars_repo_body}
+    %{starred_repo_body: starred_repo_body, no_repo_body: no_repo_body}
   end
 
   defp request(url, body) do
@@ -55,12 +55,12 @@ defmodule JsonApiWeb.StargazersControllerTest do
              } == json_response(conn, 201)
     end
 
-    test "Fail CASE", %{no_stars_repo_body: no_stars_repo_body} do
+    test "Fail CASE", %{no_repo_body: no_repo_body} do
       ######### that's where NORM library shines ###########
       # in StargazersControllerCastParams we specified that
       # username and repo are required payload fields
       # so missing a required field(s) API will respond with nicely 422 error and a message
-      conn = request("http://localhost:4000/api/add_new_repo", no_stars_repo_body)
+      conn = request("http://localhost:4000/api/add_new_repo", no_repo_body)
 
       assert %{
                "error" => 422,
