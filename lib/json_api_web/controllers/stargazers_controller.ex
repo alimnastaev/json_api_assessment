@@ -14,7 +14,7 @@ defmodule JsonApiWeb.StargazersController do
   # 1. Adding github users to ETS table :users -
   #           {username, repo_name}
   # 2. Saving the info in ETS table :stargazers -
-  #       {"username", "repo_name", {"stargazer_name", "2021-01-24", "starred"}}
+  #       {"username", "repo_name", {"stargazer_name", "2021-03-20T23:23:30Z", "starred"}}
   @decorate rescue_decorator()
   def add_new_repo(conn, _params) do
     {conn, 200, conn.assigns.clean_params}
