@@ -1,7 +1,8 @@
 defmodule JsonApi.Application do
+  @moduledoc false
+
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
-  @moduledoc false
 
   use Application
 
@@ -11,6 +12,7 @@ defmodule JsonApi.Application do
       JsonApiWeb.Endpoint
     ]
 
+    # :bag — many objects per key, but only one instance of each object per key
     :ets.new(:users, [:bag, :public, :named_table])
     :ets.new(:stargazers, [:bag, :public, :named_table])
 
